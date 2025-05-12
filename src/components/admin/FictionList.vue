@@ -1,26 +1,16 @@
 <script setup lang="ts">
+// Imports
 import { ref, onMounted } from 'vue'
 
-interface Fiction {
-  id: number
-  title: string
-  author: string
-  description: string
-  platform: string
-  platformUrl?: string
-  rating?: number
-  comment?: string
-}
+// Importing types
+import type { Fiction } from '@/types/fiction'
+
+import { getFictions, setFictions } from '@/utils/storage'
 
 const fictions = ref<Fiction[]>([])
 
-function loadFictions() {
-  const stored = localStorage.getItem('myFictions')
-  fictions.value = stored ? JSON.parse(stored) : []
-}
-
 onMounted(() => {
-  loadFictions()
+  fictions.value = getFictions()
 })
 
 function deleteFiction(id: number) {
@@ -28,7 +18,7 @@ function deleteFiction(id: number) {
   if (!confirmed) return
 
   fictions.value = fictions.value.filter((fiction) => fiction.id !== id)
-  localStorage.setItem('myFictions', JSON.stringify(fictions.value))
+  setFictions(fictions.value)
 }
 </script>
 
