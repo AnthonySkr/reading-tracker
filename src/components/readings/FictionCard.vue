@@ -55,6 +55,8 @@ function saveUpdates() {
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/main' as main;
+
 .card {
   background: #ffffff;
   padding: 16px;
@@ -63,11 +65,11 @@ function saveUpdates() {
   margin-bottom: 20px;
 
   h2 {
-    color: $primary-color;
+    color: main.$primary-color;
   }
 
   a {
-    color: $primary-color;
+    color: main.$primary-color;
   }
 
   .rating,
