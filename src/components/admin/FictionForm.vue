@@ -1,18 +1,11 @@
 <script setup lang="ts">
+// Imports
 import { ref, watch, computed } from 'vue'
-import { toRaw } from 'vue'
 
-// Define a Fiction type
-interface Fiction {
-  id: number
-  title: string
-  author: string
-  description: string
-  platform: string
-  platformUrl?: string
-  rating?: number
-  comment?: string
-}
+// Importing types
+import type { Fiction } from '@/types/fiction'
+
+import { getFictions, setFictions } from '@/utils/storage'
 
 const props = defineProps<{ editFiction: Fiction | null }>()
 const emit = defineEmits(['saved'])
@@ -60,8 +53,7 @@ function saveFiction() {
     return
   }
 
-  const stored = localStorage.getItem('myFictions')
-  const fictions: Fiction[] = stored ? JSON.parse(stored) : []
+  const fictions = getFictions()
 
   if (isEditing.value && props.editFiction) {
     // Edit existing
@@ -89,7 +81,7 @@ function saveFiction() {
     fictions.push(newFiction)
   }
 
-  // Save back to LocalStorage
+  // Set back to LocalStorage
   localStorage.setItem('myFictions', JSON.stringify(fictions))
   resetForm()
   emit('saved')
@@ -98,30 +90,32 @@ function saveFiction() {
 
 <template>
   <form @submit.prevent="saveFiction">
-    <label>
-      Title*:<br />
-      <input v-model="title" type="text" required /> </label
-    ><br /><br />
+    <h2>{{ isEditing ? 'Edit Fiction' : 'Add Fiction' }}</h2>
 
     <label>
-      Author*:<br />
-      <input v-model="author" type="text" required /> </label
-    ><br /><br />
+      Title*:
+      <input v-model="title" type="text" required />
+    </label>
 
     <label>
-      Description*:<br />
-      <textarea v-model="description" required></textarea></label
-    ><br /><br />
+      Author*:
+      <input v-model="author" type="text" required />
+    </label>
 
     <label>
-      Platform*:<br />
-      <input v-model="platform" type="text" required /> </label
-    ><br /><br />
+      Description*:
+      <textarea v-model="description" required></textarea>
+    </label>
 
     <label>
-      Platform URL (optional):<br />
-      <input v-model="platformUrl" type="url" /> </label
-    ><br /><br />
+      Platform*:
+      <input v-model="platform" type="text" required />
+    </label>
+
+    <label>
+      Platform URL (optional):
+      <input v-model="platformUrl" type="url" />
+    </label>
 
     <button type="submit">{{ isEditing ? 'Save Changes' : 'Add Fiction' }}</button>
   </form>
