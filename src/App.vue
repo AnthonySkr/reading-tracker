@@ -7,24 +7,32 @@ import { RouterLink, RouterView } from 'vue-router'
     <RouterLink to="/">Readings</RouterLink>
     <RouterLink to="/admin">Admin</RouterLink>
   </nav>
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <style scoped lang="scss">
 @use '@/assets/main' as main;
+
 nav {
   background: #e0e7ff;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 20px;
 
   a {
-    margin-right: 10px;
+    margin-right: 20px;
     color: main.$primary-color;
     text-decoration: none;
+    font-size: 20px;
   }
 
   a.router-link-exact-active {
     font-weight: bold;
   }
+}
+
+main {
+  padding: 20px;
 }
 </style>

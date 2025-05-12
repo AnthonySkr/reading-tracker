@@ -1,5 +1,10 @@
 $primary-color: #4f46e5;
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: sans-serif;
   background-color: #f3f4f6;
@@ -8,4 +13,5 @@ body {
 
 h1 {
   color: $primary-color;
+  font-size: 35px;
 }

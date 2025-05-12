@@ -62,6 +62,10 @@ function handleSaved() {
 @use '@/assets/main' as main;
 @use 'sass:color';
 
+h1 {
+  margin-bottom: 20px;
+}
+
 .nav-buttons {
   margin-bottom: 20px;
 
