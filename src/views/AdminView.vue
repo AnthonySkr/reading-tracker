@@ -7,8 +7,37 @@ import { ref } from 'vue'
 import FictionForm from '@/components/admin/FictionForm.vue'
 import FictionList from '@/components/admin/FictionList.vue'
 
+interface Fiction {
+  id: number
+  title: string
+  author: string
+  description: string
+  platform: string
+  platformUrl?: string
+  rating?: number
+  comment?: string
+}
+
 // State to control which component is visible
 const currentView = ref<'form' | 'list'>('form')
+const fictionToEdit = ref<Fiction | null>(null)
+
+// Function to start editing a fiction
+function editFiction(fiction: Fiction) {
+  currentView.value = 'form'
+  fictionToEdit.value = fiction
+}
+
+// Function to clear edit mode after saving
+function clearEdit() {
+  fictionToEdit.value = null
+}
+
+// Function to handle the @saved event
+function handleSaved() {
+  clearEdit()
+  currentView.value = 'list'
+}
 </script>
 
 <template>
@@ -24,8 +53,8 @@ const currentView = ref<'form' | 'list'>('form')
       </button>
     </div>
 
-    <FictionForm v-if="currentView === 'form'" />
-    <FictionList v-if="currentView === 'list'" />
+    <FictionForm v-if="currentView === 'form'" :edit-fiction="fictionToEdit" @saved="handleSaved" />
+    <FictionList v-if="currentView === 'list'" @edit="editFiction" />
   </div>
 </template>
 

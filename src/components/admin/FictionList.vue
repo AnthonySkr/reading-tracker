@@ -53,7 +53,10 @@ function deleteFiction(id: number) {
             <a v-if="fic.platformUrl" :href="fic.platformUrl" target="_blank">{{ fic.platform }}</a>
             <span v-else>{{ fic.platform }}</span>
           </td>
-          <td><button @click="deleteFiction(fic.id)">🗑️ Delete</button></td>
+          <td>
+            <button @click="$emit('edit', fic)">✏️ Edit</button>
+            <button @click="deleteFiction(fic.id)">🗑️ Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -91,6 +94,7 @@ table {
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
+    margin-right: 5px;
     cursor: pointer;
 
     &:hover {
