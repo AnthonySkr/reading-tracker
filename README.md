@@ -1,39 +1,84 @@
-# reading-tracker
+# 📚 Lecture Tracker
 
-This template should help get you started developing with Vue 3 in Vite.
+> Application web personnelle pour suivre ses lectures.
 
-## Recommended IDE Setup
+## 🎯 Objectif
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Lecture Tracker permet d’ajouter, noter et commenter les œuvres lues sur des plateformes ou en physique.  
+Les données sont sauvegardées localement (LocalStorage) avec possibilité d’export/import pour ne pas les perdre.
 
-## Type Support for `.vue` Imports in TS
+## ✨ Fonctionnalités
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- ➕ Ajouter une fiction (titre, auteur, description, plateforme, lien)
+- ✏️ Modifier une fiction
+- 🗑️ Supprimer une fiction
+- 📋 Consulter l’historique de lectures
+- ⭐ Noter et commenter les lectures (à venir)
+- 💾 Exporter / importer les données (à venir)
 
-## Customize configuration
+## 🛠️ Stack utilisée
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- **Frontend** : Vue 3 + TypeScript + Vue Router
+- **Styles** : SCSS
+- **Persistence** : LocalStorage (backend optionnel prévu plus tard)
 
-## Project Setup
+## 📂 Organisation
 
-```sh
+📂 reading-tracker
+├── index.html
+├── README.md
+├── 📂 public
+│ └── book.ico
+├── 📂 src
+│ ├── App.vue
+│ ├── main.ts
+│ ├── 📂 assets
+│ │ └── main.scss
+│ ├── 📂 components
+│ │ └── 📂 admin
+│ │ ├── FictionForm.vue
+│ │ └── FictionList.vue
+│ ├── 📂 router
+│ │ └── index.ts
+│ ├── 📂 views
+│ ├── AdminView.vue
+│ └── ReadingsView.vue
+
+## 🚀 Lancer le projet
+
+### Prérequis
+
+- [Node.js](https://nodejs.org/) ≥ v16 recommandé
+
+### Installation
+
+```bash
+git clone https://github.com/ton-pseudo/lecture-tracker.git
+cd lecture-tracker
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Démarrage serveur de développement
 
-```sh
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+L'application est accessible sur http://localhost:5173/
 
-```sh
-npm run build
-```
+## 🗺️ Roadmap (à venir)
 
-### Lint with [ESLint](https://eslint.org/)
+✅ Admin (ajout, modification, suppression)
 
-```sh
-npm run lint
-```
+🔲 Page Lectures (consultation + notation/commentaire)
+
+🔲 Export / import des données en JSON
+
+🔲 Synchronisation multi-appareils (backend optionnel)
+
+🔲 Déploiement (Netlify ou Vercel)
+
+## 🧑‍💻 Auteur
+
+Ton prénom (ou pseudo)  
+Projet inspiré par l’envie de mieux suivre mes lectures de fictions interactives.
