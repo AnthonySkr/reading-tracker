@@ -13,7 +13,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped lang="scss">
 @use '@/assets/main' as main;
 nav {
-  background: #e0e7ff; // Tailwind Indigo-100
+  background: #e0e7ff;
   padding: 10px;
   margin-bottom: 20px;
 
