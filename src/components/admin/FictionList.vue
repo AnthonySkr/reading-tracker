@@ -1,0 +1,101 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
+interface Fiction {
+  id: number
+  title: string
+  author: string
+  description: string
+  platform: string
+  platformUrl?: string
+  rating?: number
+  comment?: string
+}
+
+const fictions = ref<Fiction[]>([])
+
+function loadFictions() {
+  const stored = localStorage.getItem('myFictions')
+  fictions.value = stored ? JSON.parse(stored) : []
+}
+
+onMounted(() => {
+  loadFictions()
+})
+
+function deleteFiction(id: number) {
+  const confirmed = confirm('Are you sure you want to delete this fiction?')
+  if (!confirmed) return
+
+  fictions.value = fictions.value.filter((fiction) => fiction.id !== id)
+  localStorage.setItem('myFictions', JSON.stringify(fictions.value))
+}
+</script>
+
+<template>
+  <div>
+    <h2>Fiction List 📋</h2>
+
+    <table v-if="fictions.length > 0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Platform</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="fic in fictions" :key="fic.id">
+          <td>{{ fic.title }}</td>
+          <td>{{ fic.author }}</td>
+          <td>
+            <a v-if="fic.platformUrl" :href="fic.platformUrl" target="_blank">{{ fic.platform }}</a>
+            <span v-else>{{ fic.platform }}</span>
+          </td>
+          <td><button @click="deleteFiction(fic.id)">🗑️ Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p v-else>No fictions added yet.</p>
+  </div>
+</template>
+
+<style scoped lang="scss">
+@use '@/assets/main' as main;
+@use 'sass:color';
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th,
+  td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #e0e7ff;
+  }
+
+  a {
+    color: main.$primary-color;
+  }
+
+  button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: color.scale(#ef4444, $lightness: -10%);
+    }
+  }
+}
+</style>
