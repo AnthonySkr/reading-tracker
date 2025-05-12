@@ -24,25 +24,27 @@ Les données sont sauvegardées localement (LocalStorage) avec possibilité d’
 
 ## 📂 Organisation
 
-📂 reading-tracker
-├── index.html
-├── README.md
-├── 📂 public
-│ └── book.ico
-├── 📂 src
-│ ├── App.vue
-│ ├── main.ts
-│ ├── 📂 assets
-│ │ └── main.scss
-│ ├── 📂 components
-│ │ └── 📂 admin
-│ │ ├── FictionForm.vue
-│ │ └── FictionList.vue
-│ ├── 📂 router
-│ │ └── index.ts
-│ ├── 📂 views
-│ ├── AdminView.vue
-│ └── ReadingsView.vue
+```
+└── 📁reading-tracker
+    └── 📁public
+        └── book.ico
+    └── 📁src
+        └── App.vue
+        └── 📁assets
+            └── main.scss
+        └── 📁components
+            └── 📁admin
+                └── FictionForm.vue
+                └── FictionList.vue
+        └── main.ts
+        └── 📁router
+            └── index.ts
+        └── 📁views
+            └── AdminView.vue
+            └── ReadingsView.vue
+    └── index.html
+    └── README.md
+```
 
 ## 🚀 Lancer le projet
 
@@ -53,7 +55,7 @@ Les données sont sauvegardées localement (LocalStorage) avec possibilité d’
 ### Installation
 
 ```bash
-git clone https://github.com/ton-pseudo/lecture-tracker.git
+git clone https://github.com/AnthonySkr/reading-tracker.git
 cd lecture-tracker
 npm install
 ```
@@ -80,5 +82,5 @@ L'application est accessible sur http://localhost:5173/
 
 ## 🧑‍💻 Auteur
 
-Ton prénom (ou pseudo)  
+AnthonySkr  
 Projet inspiré par l’envie de mieux suivre mes lectures de fictions interactives.
