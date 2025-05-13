@@ -11,6 +11,7 @@ import type { Fiction } from '@/types/fiction'
 import FictionForm from '@/components/admin/FictionForm.vue'
 import FictionList from '@/components/admin/FictionList.vue'
 import NavButtons from '@/components/common/NavButtons.vue'
+import FictionBackup from '@/components/admin/FictionBackup.vue'
 
 // State to control which component is visible
 const currentView = ref<'form' | 'list'>('list')
@@ -49,6 +50,8 @@ function handleSaved() {
 
     <FictionForm v-if="currentView === 'form'" :edit-fiction="fictionToEdit" @saved="handleSaved" />
     <FictionList v-if="currentView === 'list'" @edit="editFiction" />
+
+    <FictionBackup />
   </div>
 </template>
 
