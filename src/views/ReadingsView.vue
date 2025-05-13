@@ -7,15 +7,12 @@ import FictionCard from '@/components/readings/FictionCard.vue'
 // Importing types
 import type { Fiction } from '@/types/fiction'
 
+import { getFictions } from '@/utils/storage'
+
 const fictions = ref<Fiction[]>([])
 
-function loadFictions() {
-  const stored = localStorage.getItem('myFictions')
-  fictions.value = stored ? JSON.parse(stored) : []
-}
-
 onMounted(() => {
-  loadFictions()
+  fictions.value = getFictions()
 })
 </script>
 

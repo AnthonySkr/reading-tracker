@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-// Import types
-import type { Fiction } from '@/types/fiction'
-
 // EXPORT
 function exportData() {
   const data = localStorage.getItem('myFictions')
@@ -38,6 +33,9 @@ function importData(event: Event) {
 
       localStorage.setItem('myFictions', JSON.stringify(parsed))
       alert('Data imported successfully.')
+
+      // Reload the page to reflect changes
+      location.reload()
     } catch (e) {
       alert('Error importing file. Make sure it’s a valid JSON export.')
     }
