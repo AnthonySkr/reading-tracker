@@ -72,7 +72,7 @@ L'application est accessible sur http://localhost:5173/
 
 ✅ Admin (ajout, modification, suppression)
 
-🔲 Page Lectures (consultation + notation/commentaire)
+✅ Page Lectures (consultation + notation/commentaire)
 
 🔲 Export / import des données en JSON
 
