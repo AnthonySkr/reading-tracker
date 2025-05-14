@@ -93,22 +93,22 @@ function saveFiction() {
     <h2>{{ isEditing ? 'Edit Fiction' : 'Add Fiction' }}</h2>
 
     <label>
-      Title*:
+      Title:
       <input v-model="title" type="text" required />
     </label>
 
     <label>
-      Author*:
+      Author:
       <input v-model="author" type="text" required />
     </label>
 
     <label>
-      Description*:
+      Description:
       <textarea v-model="description" required></textarea>
     </label>
 
     <label>
-      Platform*:
+      Platform:
       <input v-model="platform" type="text" required />
     </label>
 
@@ -126,35 +126,98 @@ function saveFiction() {
 @use 'sass:color';
 
 form {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  padding: 30px 40px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+
+  h2 {
+    margin-bottom: 20px;
+    color: main.$primary-color;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  h2::before {
+    content: '📚 ';
+    color: main.$primary-color;
+    font-size: 1.5rem;
+  }
 
   label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
   }
 
   input,
   textarea {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
+    margin-top: 5px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:focus {
+      border-color: main.$primary-color;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
   }
 
   button {
+    display: block;
+    width: 100%;
     background-color: main.$primary-color;
     color: white;
-    padding: 10px 20px;
+    padding: 12px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background-color: color.scale(main.$primary-color, $lightness: -10%);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 
-  button:hover {
-    background-color: color.scale(main.$primary-color, $lightness: -10%);
+  input,
+  textarea,
+  button {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 </style>
