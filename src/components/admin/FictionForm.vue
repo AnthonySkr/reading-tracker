@@ -16,6 +16,7 @@ const author = ref('')
 const description = ref('')
 const platform = ref('')
 const platformUrl = ref('')
+const imageUrl = ref('')
 
 // Computed to know if we are editing or adding
 const isEditing = computed(() => props.editFiction !== null)
@@ -30,6 +31,7 @@ watch(
       description.value = newVal.description
       platform.value = newVal.platform
       platformUrl.value = newVal.platformUrl || ''
+      imageUrl.value = newVal.imageUrl || ''
     } else {
       resetForm()
     }
@@ -43,6 +45,7 @@ function resetForm() {
   description.value = ''
   platform.value = ''
   platformUrl.value = ''
+  imageUrl.value = ''
 }
 
 // Function to save fiction in LocalStorage
@@ -66,6 +69,7 @@ function saveFiction() {
         description: description.value,
         platform: platform.value,
         platformUrl: platformUrl.value || '',
+        imageUrl: imageUrl.value || '',
       }
     }
   } else {
@@ -77,6 +81,7 @@ function saveFiction() {
       description: description.value,
       platform: platform.value,
       platformUrl: platformUrl.value || '',
+      imageUrl: imageUrl.value || '',
     }
     fictions.push(newFiction)
   }
@@ -115,6 +120,11 @@ function saveFiction() {
     <label>
       Platform URL (optional):
       <input v-model="platformUrl" type="url" />
+    </label>
+
+    <label>
+      Image URL (optional):
+      <input v-model="imageUrl" type="url" />
     </label>
 
     <button type="submit">{{ isEditing ? 'Save Changes' : 'Add Fiction' }}</button>

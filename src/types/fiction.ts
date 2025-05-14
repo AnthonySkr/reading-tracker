@@ -5,6 +5,7 @@ export interface Fiction {
   description: string
   platform: string
   platformUrl?: string
+  imageUrl?: string
   rating?: number
   comment?: string
 }

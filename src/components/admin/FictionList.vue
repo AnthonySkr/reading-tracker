@@ -32,6 +32,7 @@ function deleteFiction(id: number) {
           <th>Title</th>
           <th>Author</th>
           <th>Platform</th>
+          <th>Image</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -42,6 +43,10 @@ function deleteFiction(id: number) {
           <td>
             <a v-if="fic.platformUrl" :href="fic.platformUrl" target="_blank">{{ fic.platform }}</a>
             <span v-else>{{ fic.platform }}</span>
+          </td>
+          <td>
+            <a v-if="fic.imageUrl" :href="fic.imageUrl" target="_blank">Image link set</a>
+            <span v-else>No image</span>
           </td>
           <td>
             <button @click="$emit('edit', fic)">✏️ Edit</button>
