@@ -97,7 +97,7 @@ L'application est accessible sur http://localhost:5173/
 
 ### 🔵 **v1.0.0 - Améliorations visuelles**
 
-🔲 Appliquer un style propre à l'interface admin.
+✅ Appliquer un style propre à l'interface admin.
 
 🔲 Ajouter une modal pour noter et commenter.
 
