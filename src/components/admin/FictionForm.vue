@@ -82,7 +82,7 @@ function saveFiction() {
   }
 
   // Set back to LocalStorage
-  localStorage.setItem('myFictions', JSON.stringify(fictions))
+  setFictions(fictions)
   resetForm()
   emit('saved')
 }

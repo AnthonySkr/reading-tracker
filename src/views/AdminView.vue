@@ -55,8 +55,4 @@ function handleSaved() {
   </div>
 </template>
 
-<style scoped lang="scss">
-h1 {
-  margin-bottom: 20px;
-}
-</style>
+<style scoped lang="scss"></style>

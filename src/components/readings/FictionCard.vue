@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 
 // Importing types
 import type { Fiction } from '@/types/fiction'
+
+// Importing utils
+import { getFictions, setFictions } from '@/utils/storage'
 
 const props = defineProps<{ fiction: Fiction }>()
 
@@ -14,14 +17,13 @@ const comment = ref(props.fiction.comment || '')
 watch([rating, comment], saveUpdates)
 
 function saveUpdates() {
-  const stored = localStorage.getItem('myFictions')
-  const fictions: Fiction[] = stored ? JSON.parse(stored) : []
+  const fictions: Fiction[] = getFictions()
 
   const index = fictions.findIndex((f) => f.id === props.fiction.id)
   if (index !== -1) {
     fictions[index].rating = rating.value
     fictions[index].comment = comment.value
-    localStorage.setItem('myFictions', JSON.stringify(fictions))
+    setFictions(fictions)
   }
 }
 </script>
