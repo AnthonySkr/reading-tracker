@@ -34,7 +34,7 @@ function importData(event: Event) {
       localStorage.setItem('myFictions', JSON.stringify(parsed))
       alert('Data imported successfully.')
 
-      // Reload the page to reflect changes
+      // Reload the page to reflect changes NOT OPTIMAL
       location.reload()
     } catch (e) {
       alert('Error importing file. Make sure it’s a valid JSON export.')

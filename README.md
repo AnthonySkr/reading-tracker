@@ -103,7 +103,7 @@ L'application est accessible sur http://localhost:5173/
 
 🔲 Mettre en place une grille pour les cartes de fictions (aperçu rapide).
 
-🔲 Permettre l'ajout d'images de cover pour les fictions.
+✅ Permettre l'ajout d'images de cover pour les fictions.
 
 ---
 
