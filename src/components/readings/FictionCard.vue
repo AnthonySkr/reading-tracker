@@ -31,6 +31,10 @@ function saveUpdates() {
 <template>
   <div class="card">
     <h2>{{ fiction.title }}</h2>
+
+    <img v-if="fiction.imageUrl" :src="fiction.imageUrl" alt="Fiction cover" />
+    <img v-else src="../../assets/img/no-image.png" alt="No image available" />
+
     <p><strong>Author:</strong> {{ fiction.author }}</p>
     <p><strong>Description</strong> {{ fiction.description }}</p>
     <p>
