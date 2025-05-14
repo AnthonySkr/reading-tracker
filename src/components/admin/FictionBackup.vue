@@ -63,32 +63,83 @@ function importData(event: Event) {
 @use 'sass:color';
 
 .backup {
-  background: #f9fafb;
-  padding: 20px;
+  background: #ffffff;
+  padding: 30px;
   margin-top: 30px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 
   h2 {
     color: main.$primary-color;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
   button {
     background-color: main.$primary-color;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease;
 
     &:hover {
       background-color: color.scale(main.$primary-color, $lightness: -10%);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 
-  input[type='file'] {
-    margin-top: 10px;
+  label {
+    display: block;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+
+    input[type='file'] {
+      display: block;
+      margin: 10px auto 0;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+
+      &:hover {
+        border-color: main.$primary-color;
+      }
+    }
+  }
+
+  // Add subtle animations
+  h2,
+  button,
+  label {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 </style>

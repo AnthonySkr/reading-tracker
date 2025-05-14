@@ -129,7 +129,7 @@ form {
   max-width: 600px;
   margin: 0 auto;
   background: #f9f9f9;
-  padding: 30px 40px 30px 30px;
+  padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
@@ -150,6 +150,7 @@ form {
   label {
     display: block;
     margin-bottom: 15px;
+    margin-right: 15px;
     font-weight: bold;
     color: #333;
   }
