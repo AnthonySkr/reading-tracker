@@ -68,33 +68,81 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
   th,
   td {
-    padding: 8px;
-    border: 1px solid #ddd;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
   }
 
   th {
-    background-color: #e0e7ff;
-  }
-
-  a {
-    color: main.$primary-color;
-  }
-
-  button {
-    background-color: #ef4444;
+    background-color: main.$primary-color;
     color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    margin-right: 5px;
-    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+
+  tr {
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f9f9f9;
+    }
+  }
+
+  td {
+    font-size: 0.95rem;
+
+    a {
+      color: main.$primary-color;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: color.scale(#3b82f6, $lightness: -10%);
+    transform: translateY(-2px);
+  }
+
+  &.delete {
+    background-color: #ef4444;
 
     &:hover {
       background-color: color.scale(#ef4444, $lightness: -10%);
     }
   }
+}
+
+p {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 20px;
 }
 </style>
